@@ -36,7 +36,7 @@
                 
                     <div class="thumb active">
                        
-                        <img v-for="thumb in movie.images" :src="thumb" alt="">
+                        <img v-for="(thumb, index) in movie.images" @click="activeImage = index" :src="thumb" alt="">
                      
 
                 </div>
