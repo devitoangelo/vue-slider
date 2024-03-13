@@ -14,14 +14,14 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0" @mouseenter="stopAutoplay()"@mouseleave="startAutoplay">
 
                 <div class="item">
-                    <img :src="movie.images[activeImage]" alt="Spiderman" />  
+                    <img :src="movie.images[activeImage]" alt="Spiderman" />
                     <!-- abbiamo  aggiunto l'immagine con indice di defoult 0  -->
 
                     <div class="text">
-                        <h3>{{movie.title}}</h3>  
+                        <h3>{{movie.title}}</h3>
                         <p>{{movie.description}}</p>
                     </div>
                 </div>
@@ -31,30 +31,29 @@
 
                     </button>
                     <button class="next" @click="next()"></button>
-            
 
 
-                    
-                   
-                
-                    <div class="thumb active">
-                       
-                        <img v-for="(thumb, index) in movie.images" @click="activeImage = index" :src="thumb" alt="">
-                     
+
+
+
+
+                    <div class="thumb" :class="{active : activeImage === index}" v-for="(thumb, index) in movie.images">
+
+
+                        <img @click="activeImage = index" :src="thumb" alt="">
+
+                        <!-- <img v-for="(thumb, index) in movie.images" @click="activeImage = index" :src="thumb" alt="">  passaggio precedente poi ho spostato tutto sopra al div-->
+
+
+                    </div>
 
                 </div>
-
             </div>
+
         </div>
 
-    </div>
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./js/script.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="./js/script.js"></script>
 </body>
 
 </html>
-
-
-
-
